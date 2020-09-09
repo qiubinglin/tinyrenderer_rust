@@ -1,6 +1,6 @@
-include!("geometry.rs");
+mod geometry;
+mod tgaimage;
 
 fn main() {
     let a = 1;
-    if(a > 0) println!("dd");
 }
