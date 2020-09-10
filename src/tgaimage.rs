@@ -38,10 +38,22 @@ impl Mul<f64> for TGAColor {
             f64::max(0.0, intensity)
         };
         
+        let mut tgac = TGAColor {
+            bgra: [0, 0, 0, 0],
+            bytespp: 0
+        };
         let mut i = 0;
-        while(i < self.bgra.len()) {
-            self.bgra[i] = self.bgra[i]*clamped;
+        while i < self.bgra.len() {
+            tgac.bgra[i] = ((self.bgra[i] as f64) * clamped) as u8;
+            i = i + 1;
         }
-        self
+        tgac
     }
+}
+
+pub struct TGAImage {
+    width: u32,
+    height: u32,
+    bytespp: u32,
+    data: Vec<u8>
 }
